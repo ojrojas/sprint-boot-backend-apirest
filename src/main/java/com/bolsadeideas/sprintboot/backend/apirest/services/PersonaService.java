@@ -7,41 +7,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonaService implements IPersonService {
+public class PersonaService implements IRepository<Person> {
 
-    @Autowired
-    private IPersonaDao personDao;
-    @Override
-    public Iterable<Person> GetAll() {
-       return personDao.findAll();
-    }
+   @Autowired
+   private IPersonaDao personDao;
 
-    @Override
-    public Person GetById(Long id) {
-        return personDao.findById(id).orElse(null);
-    }
+   @Override
+   public Iterable<Person> GetAll() {
+      return personDao.findAll();
+   }
 
-    @Override
-    public Person Create(Person person) {
-       return personDao.save(person);
-    }
+   @Override
+   public Person GetById(Long id) {
+      return personDao.findById(id).orElse(null);
+   }
 
-    @Override
-    public Person Update(Person person, Long id) {
-       Person personPersistent = personDao.findById(id).get(); 
-       personPersistent.setLastName(person.getLastName());
-       personPersistent.setName(person.getName());
-       personPersistent.setEdad(person.getEdad());
-       personPersistent.setIdentification(person.getIdentification());
-       return personDao.save(personPersistent);
-    }
+   @Override
+   public Person Create(Person person) {
+      return personDao.save(person);
+   }
 
-    @Override
-    public Person Delete(Long id) {
-       var person =  personDao.findById(id);
-       if(person != null)
-        personDao.delete(person.get());
-        return person.get();
-    }
-    
+   @Override
+   public Person Update(Person person, Long id) {
+      Person personPersistent = personDao.findById(id).get();
+      personPersistent.setEntity(person.getName(), person.getLastName(), person.getIdentification(), person.getEdad());
+      return personDao.save(personPersistent);
+   }
+
+   @Override
+   public Person Delete(Long id) {
+      var person = personDao.findById(id);
+      if (person != null)
+         personDao.delete(person.get());
+      return person.get();
+   }
+
 }

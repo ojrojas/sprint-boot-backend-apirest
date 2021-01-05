@@ -4,8 +4,10 @@ import com.bolsadeideas.sprintboot.backend.apirest.dao.IEmployeeDao;
 import com.bolsadeideas.sprintboot.backend.apirest.models.Employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class EmployeeService implements IEmployeeService {
+@Service
+public class EmployeeService implements IRepository<Employee> {
 
     @Autowired
     private IEmployeeDao employeeDao;
@@ -28,11 +30,10 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public Employee Update(Employee employee, Long id) {
         Employee EmployeePersistent = employeeDao.findById(id).get();
-        EmployeePersistent.setNombre(employee.getNombre());
-        EmployeePersistent.setCargo(employee.getCargo());
-        EmployeePersistent.setSalario(employee.getSalario());
-        EmployeePersistent.setTiempoCompleto(employee.getTiempoCompleto());
-        EmployeePersistent.setDepartamento(employee.getDepartamento());
+       EmployeePersistent.SetEntity(
+           employee.getNombre(), employee.getCargo(), 
+           employee.getSalario(),employee.getTiempoCompleto(), 
+           employee.getDepartamentoId(), employee.getDepartament());
         return employeeDao.save(EmployeePersistent);
     }
 

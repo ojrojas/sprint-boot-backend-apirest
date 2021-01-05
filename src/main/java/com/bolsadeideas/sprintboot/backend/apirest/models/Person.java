@@ -57,6 +57,17 @@ public class Person implements Serializable {
         this.Name = name;
     }
 
+    public void setEntity(
+         String name,
+         String lastName,
+         String identification,
+         int edad) {
+             this.Name = name;
+             this.LastName = lastName;
+             this.Identification = identification;
+             this.Edad = edad;
+         }
+
 
 
 }

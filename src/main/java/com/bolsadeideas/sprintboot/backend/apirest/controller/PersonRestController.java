@@ -1,7 +1,7 @@
 package com.bolsadeideas.sprintboot.backend.apirest.controller;
 
 import com.bolsadeideas.sprintboot.backend.apirest.models.Person;
-import com.bolsadeideas.sprintboot.backend.apirest.services.IPersonService;
+import com.bolsadeideas.sprintboot.backend.apirest.services.IRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class ClienteRestController {
+public class PersonRestController {
 
     @Autowired
-    private IPersonService personaService;
+    private IRepository<Person> personaService;
 
     @GetMapping("/personas")
     public Iterable<Person> Get() {
