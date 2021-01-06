@@ -67,9 +67,9 @@ public class EmployeeService implements IRepository<Employee> {
                 Long departamentId = this.FindByName(row[4]);
                 if (departamentId == null) {
                     Departament departamentPersist = departamentDao.save(new Departament(row[4]));
-                    employeeDao.save(new Employee(row[0], row[1], Long.parseLong(row[2]), row[3], departamentPersist.getId()));
+                    employeeDao.save(new Employee(row[0], row[1], Double.parseDouble(row[2]), row[3], departamentPersist.getId()));
                 } else {
-                    employeeDao.save(new Employee(row[0], row[1], Long.parseLong(row[2]), row[3], departamentId));
+                    employeeDao.save(new Employee(row[0], row[1], Double.parseDouble(row[2]), row[3], departamentId));
                 }
             }
             return true;
@@ -92,7 +92,7 @@ public class EmployeeService implements IRepository<Employee> {
     @Override
     public Iterable<Employee> GetTake(int quantity) {
        List<Employee> employees = (List<Employee>) employeeDao.findAll();
-       Collections.sort(employees, Collections.reverseOrder());
+       //Collections.sort(employees, Collections.reverseOrder());
        List<Employee> emploresult = employees.stream()
        .limit(quantity).collect(Collectors.toList());
         return emploresult;

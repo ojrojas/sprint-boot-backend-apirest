@@ -65,11 +65,10 @@ public class EmployeeRestController {
      public Iterable<Employee> GetById(@PathVariable Integer quantity) {
         return employeeService.GetTake(quantity);
     }
-
     
     @GetMapping("/empleados/SumSalaries")
-     public Long SumSalaries() {
+     public Double SumSalaries() {
         List<Employee> empleados = (List<Employee>) employeeService.GetAll();
-        return empleados.stream().mapToLong(x -> x.getSalario()).sum();
+        return empleados.stream().mapToDouble(x -> x.getSalario()).sum();
     }
 }
