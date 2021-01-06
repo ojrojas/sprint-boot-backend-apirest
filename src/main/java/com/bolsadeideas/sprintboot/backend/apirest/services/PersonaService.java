@@ -5,6 +5,7 @@ import com.bolsadeideas.sprintboot.backend.apirest.models.Person;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PersonaService implements IRepository<Person> {
@@ -40,6 +41,24 @@ public class PersonaService implements IRepository<Person> {
       if (person != null)
          personDao.delete(person.get());
       return person.get();
+   }
+
+   @Override
+   public boolean ProcessReadFile(MultipartFile file) {
+      // TODO Auto-generated method stub
+      return false;
+   }
+
+   @Override
+   public Long FindByName(String name) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Iterable<Person> GetTake(int quantity) {
+      // TODO Auto-generated method stub
+      return null;
    }
 
 }

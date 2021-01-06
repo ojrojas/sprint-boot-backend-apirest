@@ -17,6 +17,8 @@ public class Departament implements Serializable {
     private Long Id;
     private String Name;
 
+    
+
     /**
      *
      */
@@ -29,5 +31,15 @@ public class Departament implements Serializable {
     public void setName(String name) {
         this.Name = name;
     }
+
+    public Departament(String name) {
+        Name = name;
+    }
+
+    public Long getId(){
+        return this.Id;
+    }
+
+    public Departament(){}
 
 }

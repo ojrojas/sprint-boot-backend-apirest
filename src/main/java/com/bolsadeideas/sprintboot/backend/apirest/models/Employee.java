@@ -17,7 +17,7 @@ public class Employee implements Serializable {
     private Long Id;
     private String Nombre;
     private String Cargo;
-    private String Salario;
+    private Long Salario;
     private String TiempoCompleto;
     private Long DepartamentoId;
     private Departament Departament;
@@ -55,11 +55,11 @@ public class Employee implements Serializable {
         this.TiempoCompleto = tiempoCompleto;
     }
 
-    public String getSalario() {
+    public Long getSalario() {
         return Salario;
     }
 
-    public void setSalario(String salario) {
+    public void setSalario(Long salario) {
         this.Salario = salario;
     }
 
@@ -75,10 +75,12 @@ public class Employee implements Serializable {
         this.Nombre = nombre;
     }
 
+    
+
     public void SetEntity(
         String nombre,
         String cargo,
-        String salario,
+        Long salario,
         String tiempoCompleto,
         Long departamentoId,
         Departament departament){
@@ -89,4 +91,15 @@ public class Employee implements Serializable {
         this.Departament = departament;
         this.DepartamentoId = departamentoId;
     }
+
+    public Employee(String nombre, String cargo, Long salario, String tiempoCompleto, Long departamentoId) {
+        Nombre = nombre;
+        Cargo = cargo;
+        Salario = salario;
+        TiempoCompleto = tiempoCompleto;
+        DepartamentoId = departamentoId;
+    }
+
+    public Employee(){}
+    
 }
