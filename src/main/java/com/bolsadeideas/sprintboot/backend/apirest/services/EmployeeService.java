@@ -1,10 +1,7 @@
 package com.bolsadeideas.sprintboot.backend.apirest.services;
 
 import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.bolsadeideas.sprintboot.backend.apirest.dao.IDepartamentDao;
